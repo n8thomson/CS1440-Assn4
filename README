@@ -1,0 +1,109 @@
+# Project description 
+
+Our firm has been contracted to help a mathematician take his amazing
+one-million dollar idea to market.  Our client specializes in the field of
+complex dynamics, which, frankly, is well above my pay grade, but so is
+programming to him.  He has a passion for mathematics education and wants to
+take his programs to the K-12 system to teach middle and high-school students
+all about the beauty of complex numbers and repeated, tedious calculations.  I
+didn't have the heart to tell him that there are already dozens of websites
+doing what he wants to do for free; if his inability to use Google keeps us in
+steady work, who am I to set him straight?
+
+He has created two prototype programs intended for use by high school math
+students, but quickly found that making user-friendly software is perhaps more
+difficult than understanding complex dynamics.  This is where we come in.
+
+Our contract is to adapt his programs into a complete Programming Systems
+Product including documentation and unit tests.  We must also make it usable
+by non-programmers, which means that instead of controlling the program by
+changing hard-coded data within the source code it must accept configuration
+files from the command-line and adjust its runtime behavior accordingly.
+
+Now, I realize that asking a user to create configuration files and run a
+program from the command-line is no longer considered user-friendly in the
+21st century.  We have two teams working on this project: one team will be
+creating a GUI which is what the students will ultimately interact with.  This
+GUI will drive the core program that you are tasked with creating.  You are
+the other team.  Your responsibility is to make sure that your piece of the
+Program System adheres to the configuration file format that the GUI team has
+defined, as well as the command-line interface they are expecting.
+
+
+
+
+# Running the programs
+
+Presently, these programs are very simple and self-contained.  You may run
+them directly from the command line like so:
+
+    python src/mandelbrot.py
+    python src/julia.py
+
+If you want to use PyCharm you should create a Run configuration to launch the
+program in this manner.
+
+
+One of the first things you should do is make the program accept a fractal
+configuration file from the command-line so that we don't need to hack the
+source code each time we want it to produce a new image.  The GUI team has
+translated the hardcoded fractal configurations into the sample configuration
+files you will find in the data/ directory.
+
+
+
+# Hints
+
+UsefulJS does a nice explanation of how the Mandelbrot set works and how the
+Julia set is related to it:
+
+http://usefuljs.net/fractals/docs/julia_mandelbrot.html
+
+The points *inside* the cardioid are the points *within* the Mandlebrot set.
+These are the coordinates on the imaginary plane corresponding to Z values
+which fail to become greater than 2+0i after repeated iterations.
+
+
+
+## Online fractal visualizers
+
+Mandlebrot set visualizers:
+
+* https://atopon.org/mandel/
+* https://sciencedemos.org.uk/mandelbrot.php
+
+Julia set visualizer:
+
+* http://bl.ocks.org/syntagmatic/3736720
+
+
+
+### A helper program
+
+You may find it useful to write a small helper program to convert these
+websites' (minX, minY), (maxX, maxY) coordinates into our (centerX, centerY) +
+axisLength scheme.  This will enable you to compare your program's output with
+known working programs.  A common bug is that program produces output which is
+upside down or backwards.  You may not know that this is happening until you
+compare your program's pictures to those created by other programs.
+
+
+
+
+
+## Other fun links
+
+* FractInt: A classic MS-DOS program (which is *still* under development!)
+  whose users have made interesting discoveries within the Mandelbrot set and
+  other related fractals over the years
+    https://www.fractint.org/
+
+
+* GNU XaoS: A free and open source fractal explorer for Linux, Windows and Mac
+    http://matek.hu/xaos/doku.php
+
+
+* Eyecandy: Turn your computer into an expensive lava lamp.  Contains links to
+  other programs you can use to explore fractals and other interesting
+  patterns of pixels.
+    http://eyecandyarchive.com/

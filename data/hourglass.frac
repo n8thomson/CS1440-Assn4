@@ -1,0 +1,8 @@
+type: Julia
+cReal: -1
+cImag: 0
+pixels: 1024
+centerX: 0.618
+centerY: 0.0
+axisLength: 0.017148277367054
+iterations: 78

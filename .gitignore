@@ -1,0 +1,8 @@
+*.png
+*.gif
+*.ppm
+*.pgm
+*.bmp
+*.txt
+__pycache__
+*.pyc
