@@ -1,0 +1,3 @@
+# PNG images and plain TXT files are allowed here
+!*.txt
+!*.png
