@@ -139,9 +139,15 @@ images = {
             'centerY':     0.030620936230004017,
             'axisLength':  0.03,
             },
+
+        'leaf': {
+            'centerX':     -1.543577002,
+            'centerY':     -0.000058690069,
+            'axisLength':  0.000051248888,
+            },
         }
 
-image = 'fullmandelbrot'
+image = 'spiral0'
 
 
 # Set up the GUI so that we can paint the fractal image on the screen
