@@ -1,22 +1,26 @@
 from tkinter import Tk, Canvas, PhotoImage, mainloop
 import sys
-import MyMandelbrot
-import MyJulia
+import Mandelbrot
+import Julia
+import Gradient
+import Color
 
 
-def paint(fractal, gradient, img):
 
-    type = fractal['type']
-    pixels = fractal['pixels']
-    centerX = fractal['centerX']
-    centerY = fractal['centerY']
-    axisLength = fractal['axisLength']
-    iterations = fractal['iterations']
+def paint(fractal, img, window, imagename, r1, g1, b1, r2, g2, b2):
 
-    if type = "Mandelbrot":
-        MyMandelbrot.mandelbrot('''INSERT''')
-        else:
-        MyJulia.julia('''INSERT''', fractal['cReal'], fractal['cImag'])
+
+    type = fractal['type'].lower()
+    pixels = int(fractal['pixels'])
+    centerX = float(fractal['centerx'])
+    centerY = float(fractal['centery'])
+    axisLength = float(fractal['axislength'])
+    iterations = int(fractal['iterations'])
+
+    startColor = Color.Color(r1, g1, b1)
+    stopColor = Color.Color(r2, g2, b2)
+
+    gradient = Gradient.Gradient().linerlyInterpolate(iterations, startColor, stopColor)
 
 
     minx = centerX - (axisLength / 2.0)
@@ -38,20 +42,27 @@ def paint(fractal, gradient, img):
         for row in range(pixels):
             x = minx + col * pixelsize
             y = miny + row * pixelsize
-            color = colorOfThePixel(complex(x, y), gradient)
+            if type == "mandelbrot":
+                color = gradient[Mandelbrot.mandelbrot(complex(x, y), iterations)]
+            if type == "julia":
+                color = gradient[Julia.julia(complex(x, y), iterations, int(fractal['creal']), int(fractal['cimag']))]
+
             img.put(color, (col, row))
     print(
         f"{imagename} ({pixels}x{pixels}) ================================================================ 100%",
         file=sys.stderr)
 
-    canvas = Canvas(Tk(), width=pixels, height=pixels, bg=gradient[0])
+    canvas = Canvas(window, width=pixels, height=pixels, bg=gradient[0])
     canvas.pack()
     canvas.create_image((pixels / 2, pixels / 2),
                         image=img, state="normal")
 
-    def theLoop(z, c):
-        for i in range(iterations):
-            z = z * z + c
-            if abs(z) > 2:
-                return gradient[i]
-        return gradient[iterations - 1]
+
+
+
+def theLoop(z, c, iterations):
+    for i in range(iterations):
+        z = z * z + c
+        if abs(z) > 2:
+            return i
+    return (iterations - 1)

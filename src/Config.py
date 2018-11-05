@@ -1,13 +1,21 @@
 import sys
 
 
-def createConfigDict(self):
+def createConfigDict():
     d = {}
 
-    file = open("data/" + sys.argv[1])
-    print(file.read())
+    fileName = sys.argv[1]
+    file = open(fileName)
+
+
+
 
     for line in file:
-        d[line.split(":")[0]] = print(line.split(":")[1].strip())
+        if ":" in line :
+            d[line.split(":")[0].lower()] = line.split(":")[1].strip()
 
     return d
+
+def getSimpleFileName():
+
+    return str(sys.argv[1].split("/")[1]).split(".")[0]
