@@ -2,7 +2,8 @@ from Color import Color
 
 class Gradient():
     def __init__(self):
-        pass
+        raise NotImplementedError("Don't instantiate a Gradient!  Instantiate a subclass of Gradient!!!")
+
 
     def getColor(self, n):
         return self.colors[n - 1]
@@ -21,7 +22,10 @@ class Gradient():
         dGrn = (stop.g - start.g) / (steps - 1)
         dBlu = (stop.b - start.b) / (steps - 1)
         return list(
-            map(lambda n: Color((n * dRed) + start.r, (n * dGrn) + start.g, (n * dBlu) + start.b) , range(steps)))
+            map(lambda n: Color(int(n * dRed) + start.r, int(n * dGrn) + start.g, int(n * dBlu) + start.b) , range(steps)))
+
+    def getGradient(self, iterations):
+        pass
 
     def __str__(self):
         return f"This is a gradient of {self.getNumColors()} colors: {self.colors}"
