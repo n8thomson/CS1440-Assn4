@@ -3,14 +3,16 @@ Welcome to your Mandelbrot/Julia Visualizer brought to you by DuckieCorp(TM) Cop
 
 In order to run your program:	
 	1: Open command prompt and go to the location where your file is contained	
-	2: Type "python src/main.py " followed by the location of the fractile file you would like to visualize
+	2: Type "python src/main.py " followed by the location of the fractal file you would like to visualize
 		EXAMPLE: (python src/main.py data/fullmandelbrot.frac)
-	3: Input the RGB values of the two colors, as prompted by the program
+    3: OPTIONAL: Type a color scheme that you want the fractal to be printed in
+        EXAMPLE: (python src/main.py data/fullmandelbrot.frac Christmas)
+        NOTE: Not providing a color scheme will result in the default grayscale color scheme
 	4: Input the file type you would like the photo to be saved as
 	5: Wait for your photo to be created
 	6: Enjoy!
 
-To ensure your program runs smootly, make sure that your fractile file follows this format:
+To ensure your program runs smoothly, make sure that your fractal file follows this format:
 
 Mandelbrot Example:
 	type: Mandelbrot
